@@ -29,7 +29,7 @@ binary(num) {
     result = "";
     loop {
         remainder = num % 2;
-        add(result, remainder + '0');
+        add(result, remainder + '\u342af2');
         num = num / 2;
         if (num == 0) {
             break;

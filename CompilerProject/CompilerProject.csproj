@@ -33,5 +33,7 @@
   <ItemGroup>
     <Compile Include="LegendaryTokenAnalyzer.cs" />
     <Compile Include="Reader.cs" />
+    <Compile Include="TokenCategory.cs" />
+    <Compile Include="Token.cs" />
   </ItemGroup>
 </Project>

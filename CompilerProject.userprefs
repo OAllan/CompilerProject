@@ -1,8 +1,9 @@
 ﻿<Properties StartupItem="CompilerProject/CompilerProject.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CompilerProject/LegendaryTokenAnalyzer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CompilerProject/Reader.cs">
     <Files>
-      <File FileName="CompilerProject/LegendaryTokenAnalyzer.cs" Line="17" Column="1" />
+      <File FileName="CompilerProject/LegendaryTokenAnalyzer.cs" Line="11" Column="3" />
+      <File FileName="CompilerProject/Reader.cs" Line="34" Column="36" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
