@@ -1,4 +1,13 @@
-﻿
+﻿// Token categories for the scaneer.
+
+// Token categories
+// Date: 29-Jan-2018
+// Authors:
+//          A01374648 Mario Lagunes Nava 
+//          A01375640 Brandon Alain Cruz Ruiz
+//			A01376200 Oscar Allan Ruiz Toledo
+// File name: TokenCatergory.cs
+
 namespace DeepLingo {
 
 	public enum TokenCategory{
@@ -18,6 +27,7 @@ namespace DeepLingo {
 		OPEN_BRACKET,
 		CLOSE_BRACKET,
 		LESS,
+		GREATER,
 		MUL,
 		MINUS,
 		DIV,

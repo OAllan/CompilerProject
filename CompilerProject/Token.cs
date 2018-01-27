@@ -1,4 +1,14 @@
-﻿using System;
+﻿// Token class for the scaneer.
+
+// Token class
+// Date: 29-Jan-2018
+// Authors:
+//          A01374648 Mario Lagunes Nava 
+//          A01375640 Brandon Alain Cruz Ruiz
+//			A01376200 Oscar Allan Ruiz Toledo
+// File name: Token.cs
+
+using System;
 
 namespace DeepLingo {
 	public class Token {

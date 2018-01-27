@@ -1,4 +1,14 @@
-﻿using System;
+﻿// This class performs the lexical analysis.
+
+// Lexical Analysis
+// Date: 29-Jan-2018
+// Authors:
+//          A01374648 Mario Lagunes Nava 
+//          A01375640 Brandon Alain Cruz Ruiz
+//			A01376200 Oscar Allan Ruiz Toledo
+// File name: Reader.cs
+
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Text;
@@ -9,11 +19,12 @@ namespace DeepLingo {
 
 		string text;
 
-
+		// *** Initializes a contrusctor for the class ***\\
 		public Reader(string text){
 			this.text = text;
 		}
 
+		// *** All the regular experesions and tokens ***\\
 		static readonly Regex regex = new Regex(
 			@"(?<StringLit>	"".*""	)
 			|	(?<Comment>		(\/[*](.|\n)*[*]\/ | \/\/.*)	)
@@ -32,6 +43,7 @@ namespace DeepLingo {
 			|	(?<RighBrack> 	{	)
 			|	(?<LeftBrack> 	}	)
 			| 	(?<Less>       [<]	)
+			|	(?<Greater>		[>]	)
 			| 	(?<Mul>        [*]	)
 			| 	(?<Minus>        [-]	)
 			|	(?<Div>		   [/]	)
@@ -48,6 +60,8 @@ namespace DeepLingo {
 			| RegexOptions.Compiled
 			| RegexOptions.Multiline);
 
+		
+		// *** A dictionary for the keywords ***\\
 		static IDictionary<string, TokenCategory> keywords = new Dictionary<string, TokenCategory> () {
 			{"if", TokenCategory.IF},
 			{"var", TokenCategory.VAR},
@@ -58,6 +72,7 @@ namespace DeepLingo {
 			{"return", TokenCategory.RETURN}
 		};
 
+		// *** A dictionary for the non-keywords ***\\
 		static IDictionary<string, TokenCategory> nonkeywords = new Dictionary<string, TokenCategory> () {
 			{"StringLit", TokenCategory.STRING_LITERAL},
 			{"CharLit", TokenCategory.CHARACTER_LITERAL},
@@ -75,6 +90,7 @@ namespace DeepLingo {
 			{"RighBrack", TokenCategory.OPEN_BRACKET},
 			{"LeftBrack", TokenCategory.CLOSE_BRACKET},
 			{"Less", TokenCategory.LESS},
+			{"Greater", TokenCategory.GREATER},
 			{"Mul", TokenCategory.MUL},
 			{"Minus", TokenCategory.MINUS},
 			{"Div", TokenCategory.DIV},
@@ -88,7 +104,7 @@ namespace DeepLingo {
 
 		};
 
-
+		// *** Checks if the match is a newLine, comment, keyword, etc. ***\\
 		public IEnumerable<Token> Start(){
 			var row = 1;
 			var column = 0;
@@ -122,24 +138,21 @@ namespace DeepLingo {
 						}
 					}
 				}
-
 			}
 		}
 
+		// *** Counts the number of times a specify character appears in each line ***\\
 		public static int Count(string str, char ch){
 			char[] caracteres = str.ToCharArray ();
 			int count = 0;
 			foreach (char c in caracteres) {
 				if (c == ch)
 					count++;
-			}
-				
+			}				
 			return count;
 		}
 		 
-
 	}
-
 
 }
 
