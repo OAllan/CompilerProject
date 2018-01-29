@@ -19,12 +19,12 @@ namespace DeepLingo {
 
 		string text;
 
-		// *** Initializes a contrusctor for the class ***\\
+		// *** Initializes a constructor for the class ***\\
 		public Reader(string text){
 			this.text = text;
 		}
 
-		// *** All the regular experesions and tokens ***\\
+		// *** All the regular expressions and tokens ***\\
 		static readonly Regex regex = new Regex(
 			@"(?<StringLit>	"".*""	)
 			|	(?<Comment>		(\/[*](.|\n)*[*]\/ | \/\/.*)	)
