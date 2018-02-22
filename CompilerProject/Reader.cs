@@ -10,8 +10,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace DeepLingo {
 
@@ -39,6 +39,7 @@ namespace DeepLingo {
 			|	(?<NotEqu>		!=	)
 			|	(?<PlusP>		[+][+]	)
 			|	(?<MinusM>		--	)
+			|	(?<Neg>			!	)
 			|	(?<Assign>		=	)
 			|	(?<RighBrack> 	{	)
 			|	(?<LeftBrack> 	}	)
@@ -51,6 +52,8 @@ namespace DeepLingo {
 			| 	(?<Newline>    \n 	)
 			|	(?<ParLeft>    [(]	)
 			| 	(?<ParRight>   [)]	)
+			|	(?<SqBrackLeft>	\[	)
+			|	(?<SqBrackRight>	\])
 			| 	(?<Plus>       [+]	)
 			|	(?<SemiColon>	;	)
 			|	(?<Comma>		,	)
@@ -100,7 +103,10 @@ namespace DeepLingo {
 			{"Plus", TokenCategory.PLUS},
 			{"SemiColon", TokenCategory.SEMICOLON},
 			{"Comma", TokenCategory.COMMA},
-			{"Other", TokenCategory.ILL_CHAR}
+			{"Other", TokenCategory.ILL_CHAR},
+			{"Neg", TokenCategory.NEG},
+			{"SqBrackLeft", TokenCategory.OPEN_SQUARE_BRACK},
+			{"SqBrackRight", TokenCategory.CLOSE_SQUARE_BRACK}
 
 		};
 
@@ -139,9 +145,11 @@ namespace DeepLingo {
 					}
 				}
 			}
+
+			yield return new Token(TokenCategory.EOF, "", 0, 0);
 		}
 
-		// *** Counts the number of times a specify character appears in each line ***\\
+		// *** Counts the number of times a specific character appears in each line ***\\
 		public static int Count(string str, char ch){
 			char[] caracteres = str.ToCharArray ();
 			int count = 0;

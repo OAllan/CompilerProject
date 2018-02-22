@@ -35,5 +35,7 @@
     <Compile Include="Reader.cs" />
     <Compile Include="TokenCategory.cs" />
     <Compile Include="Token.cs" />
+    <Compile Include="LegendarySyntacticAnalyzer.cs" />
+    <Compile Include="SyntaxError.cs" />
   </ItemGroup>
 </Project>

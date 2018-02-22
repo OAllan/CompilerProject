@@ -44,6 +44,10 @@ namespace DeepLingo {
 		ELSE,
 		ELSEIF,
 		RETURN,
-		VAR
+		VAR,
+		EOF,
+		NEG, 
+		OPEN_SQUARE_BRACK,
+		CLOSE_SQUARE_BRACK
 	}
 }

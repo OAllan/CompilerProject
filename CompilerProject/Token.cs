@@ -29,6 +29,9 @@ namespace DeepLingo {
 			return string.Format ("[{0}, {1}, @({2}, {3})]", category.ToString(), value, row, column);
 		}
 
+		public TokenCategory Category {
+			get{ return this.category; }
+		}
 
 	}
 }
