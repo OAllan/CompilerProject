@@ -1,3 +1,5 @@
 CompilerProject/obj/
 CompilerProject/bin/
 *.exe
+*.userprefs
+*.usertasks
