@@ -33,5 +33,21 @@ namespace DeepLingo {
 			get{ return this.category; }
 		}
 
+		public int Row {
+			get{ return this.row; }
+		}
+
+		public int Column {
+			get{ return this.column; }
+		}
+
+
+		public int LastIndex() {
+			return column + value.Length;
+		}
+
+		public string Value{
+			get{ return this.value; }
+		}
 	}
 }

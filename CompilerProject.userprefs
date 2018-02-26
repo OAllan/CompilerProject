@@ -1,11 +1,13 @@
 ﻿<Properties StartupItem="CompilerProject/CompilerProject.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../../../Downloads/exam1/solution1/problem2.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CompilerProject/LegendarySyntacticAnalyzer.cs">
     <Files>
-      <File FileName="CompilerProject/LegendaryTokenAnalyzer.cs" Line="1" Column="1" />
-      <File FileName="CompilerProject/Reader.cs" Line="67" Column="31" />
-      <File FileName="CompilerProject/Token.cs" Line="1" Column="1" />
-      <File FileName="../../../../../../Downloads/exam1/solution1/problem2.cs" Line="51" Column="45" />
+      <File FileName="CompilerProject/LegendaryTokenAnalyzer.cs" Line="10" Column="1" />
+      <File FileName="CompilerProject/Reader.cs" Line="121" Column="28" />
+      <File FileName="CompilerProject/Token.cs" Line="33" Column="31" />
+      <File FileName="CompilerProject/TokenCategory.cs" Line="51" Column="21" />
+      <File FileName="CompilerProject/LegendarySyntacticAnalyzer.cs" Line="13" Column="2" />
+      <File FileName="CompilerProject/SyntaxError.cs" Line="6" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -12,6 +12,9 @@
 
 LegendaryTokenAnalyzer.exe: Reader.cs LegendaryTokenAnalyzer.cs Token.cs TokenCategory.cs               
 	mcs -out:LegendaryTokenAnalyzer.exe Reader.cs LegendaryTokenAnalyzer.cs Token.cs TokenCategory.cs
-			
+
+LegendarySyntacticAnalyzer.exe: Reader.cs LegendaryTokenAnalyzer.cs Token.cs TokenCategory.cs SyntaxError.cs
+	mcs -out:LegendarySyntacticAnalyzer.exe Reader.cs LegendarySyntacticAnalyzer.cs Token.cs TokenCategory.cs SyntaxError.cs
+
 clean:
-	rm LegendaryTokenAanalyzer.exe
+	rm LegendaryTokenAnalyzer.exe
