@@ -1,11 +1,44 @@
 ﻿// Syntactic Analyzer
 
 // Legendary Syntactic Analyzer
-// Date: 25-Feb-2018
+// Date: 05-Mar-2018
 // Authors:
 //          A01375640 Brandon Alain Cruz Ruiz
 //			A01376200 Oscar Allan Ruiz Toledo
+//			A01374648 Mario Lagunes Nava
 // File name: LegendarySyntacticAnalyzer.cs
+
+/*
+	program -> def-list EOF									expr-and -> expr-comp(&& expr-comp)*
+	def-list -> def*										expr-comp -> expr-rel(op-comp expr-rel)*
+	def -> (var-def | fun-def)+								expr-rel -> expr-add(op-rel expr-add)*
+	var-def -> var var-list;								expr-add -> expr-mul(op-add expr-mul)*
+	var-list -> id-list										expr-mul -> expr-unary(op-mul expr-unary)*
+	id-list -> id id-list-cont								expr-unary -> expr-primary(op-unary exper-unary)*
+	id-list-cont-> (, id id-list-cont)*						expr-primary -> func-call | id | array | lit | (expr)
+	fun-def -> id(param-list){								array -> [expr-list]
+				var-def-list								lit -> lit int | lit-char | lit str
+				stmt-list}									op-unary -> + | - |!
+	param-list -> id-list?									op-mul -> * | / | %
+	var-def-list -> var-def*								op-add -> + | -
+	stmt-list -> stmt*										op-rel -> < | <= | > | >=
+	stmt -> stmt-assign | stmt-incr							op-comp -> == | !=
+			stmt-decr | stmt-func-call						stmt-if -> if(expr){stmt-list}
+			stmt-if | stmt-loop											else-if-list else
+			stmt-break | stmt-return						else-if-list -> (elseif (expr) { stmt-list})?
+			stmt-empty										else -> (else { stmt-list})?
+	stmt-assig -> id = expr;								stmt-loop -> loop { stmt-list}
+	stmt-incr -> id ++;										stmt-break -> break;
+	stmt-decr -> id --;										stmt-return -> return expr;
+	stmt-func-call -> func-call;							stmt-empty -> ;
+	func-call -> id(expr-list)
+	exper-list -> (expr expr-list-cont)?
+	exper-list-cont -> (, expr expr-list-cont)*
+	expr -> expr-or
+	expr-or -> expr-and (|| expr-and)*
+	
+*/
+
 using System;
 using System.IO;
 using System.Text;
