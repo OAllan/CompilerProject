@@ -28,7 +28,7 @@ namespace DeepLingo {
 		static readonly Regex regex = new Regex(
 			@"(?<StringLit>	"".*""	)
 			|	(?<Comment>		(\/[*](.|\n)*[*]\/ | \/\/.*)	)
-			|	(?<CharLit>		[']( \w | [\\] (n | r | [\\] | [""]| ['] | t | u[A-Fa-f0-9]{6} ) )[']	)
+			|	(?<CharLit>		[']( . | [\\] (n | r | [\\] | [""]| ['] | t | u[A-Fa-f0-9]{6} ) )[']	)
 			|	(?<Identifier> 	[a-zA-Z][a-zA-Z0-9_]*	)
 			|	(?<IntLit>		-?\d+ )
 			|	(?<And>			([&][&]| [&])	)
