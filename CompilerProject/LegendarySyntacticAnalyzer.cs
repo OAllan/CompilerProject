@@ -103,13 +103,13 @@ namespace DeepLingo {
 			get { return stream.Current.Category; }
 		}
 
-		public Token Expect(TokenCategory category) {
+		public Token Expect(TokenCategory category, string errorMessage = null) {
 			if (Current == category) {
 				previous = stream.Current;
 				stream.MoveNext ();
 				return previous;
 			} else {
-				throw new SyntaxError(String.Format("Syntax Error: Expected {0}, given '{1}' at ({2}, {3})", ErrorFormat(category.ToString()), stream.Current.Value , previous.Row, previous.LastIndex()));
+				throw new SyntaxError(errorMessage != null? errorMessage: String.Format("Syntax Error: Expected {0}, given '{1}' at ({2}, {3})", ErrorFormat(category.ToString()), stream.Current.Value , previous.Row, previous.LastIndex()));
 			}
 		}
 
@@ -205,6 +205,9 @@ namespace DeepLingo {
 						break;
 					case TokenCategory.OPEN_PARENTHESIS:
 						StmtFunCall ();
+						break;
+					default:
+						Expect (TokenCategory.ASSIGN, String.Format("Syntax Error: Expected operator or open parenthesis, given '{0}' at ({1}, {2})", stream.Current.Value , previous.Row, previous.LastIndex()));
 						break;
 					}
 					break;
@@ -437,6 +440,7 @@ namespace DeepLingo {
 				Lit ();
 				break;
 			default:
+				Expect (TokenCategory.IDENTIFIER, String.Format("Syntax Error: Expected expression, given '{0}' at ({1}, {2})", stream.Current.Value , previous.Row, previous.LastIndex()));
 				break;
 			}
 		}
