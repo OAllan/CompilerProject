@@ -37,5 +37,7 @@
     <Compile Include="Token.cs" />
     <Compile Include="LegendarySyntacticAnalyzer.cs" />
     <Compile Include="SyntaxError.cs" />
+    <Compile Include="Node.cs" />
+    <Compile Include="NodeDefinitions.cs" />
   </ItemGroup>
 </Project>

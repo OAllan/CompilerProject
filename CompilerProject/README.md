@@ -10,6 +10,7 @@ Compiler Project
 
    * Lexical analysis
    * Syntactic analysis
+   * AST Construction
     
 ## Lexical Analyzer
 
