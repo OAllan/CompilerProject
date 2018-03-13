@@ -136,11 +136,9 @@ namespace DeepLingo {
 		public Node Def() {
 			if (Current == TokenCategory.VAR) {
 				return VarDef();
-			} else if(Current == TokenCategory.IDENTIFIER){
+			} else {
 				return FuncDef();
 			}
-
-			return null;
 		}
 
 		public Node VarDef() {
@@ -299,10 +297,7 @@ namespace DeepLingo {
 			ifStatement.Add (StmtList ());
 			Expect (TokenCategory.CLOSE_BRACKET);
 			ifStatement.Add (ElseIfList ());
-			var elseStatement = Else ();
-			if (elseStatement != null) {
-				ifStatement.Add (elseStatement);	
-			}
+			ifStatement.Add (Else ());
 			return ifStatement;
 		}
 
@@ -356,16 +351,15 @@ namespace DeepLingo {
 		}
 
 		public Node Else() {
+			var elseStatement = new Else ();
 			if (Current == TokenCategory.ELSE) {
-				var elseStatement = new Else () {
-					AnchorToken = Expect (TokenCategory.ELSE)
-				};
+				elseStatement.AnchorToken = Expect (TokenCategory.ELSE);
 				Expect (TokenCategory.OPEN_BRACKET);
 				elseStatement.Add (StmtList ());
 				Expect (TokenCategory.CLOSE_BRACKET);
 				return elseStatement;
 			}
-			return null;
+			return elseStatement;
 		}
 
 		public Node Expr() {
