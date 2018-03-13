@@ -10,6 +10,7 @@ Compiler Project
 
    * Lexical analysis
    * Syntactic analysis
+   * AST construction
     
 ## Lexical Analyzer
 
@@ -23,7 +24,7 @@ To run:
 mono LegendaryTokenAnalyzer.exe <file_name>
 ```
 
-## Syntactic Analyzer
+## Syntactic Analyzer and AST construction
 
 To build, type:
 ```
