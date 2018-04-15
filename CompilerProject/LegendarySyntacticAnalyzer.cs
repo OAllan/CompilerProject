@@ -76,8 +76,21 @@ namespace DeepLingo {
 			}
 			var syntacticAnalyzer = new LegendarySyntacticAnalyzer (FileReader (args [0]));
 			var program = syntacticAnalyzer.Program ();
-			Console.WriteLine (program.ToStringTree());
-				
+			Console.WriteLine ("Syntax ok!");
+			
+			var semanticAnalyzer = new LegendarySemanticAnalyzer();
+
+			semanticAnalyzer.Visit((dynamic) program);
+			
+			Console.WriteLine(semanticAnalyzer.Variables);
+			Console.WriteLine();
+			Console.WriteLine();
+			Console.WriteLine("Function Table");
+            Console.WriteLine("============");
+            foreach (var entry in semanticAnalyzer.Functions) {
+                Console.WriteLine(entry);                        
+            }
+			Console.WriteLine("Semantic ok!");
 		}
 
 		public static Reader FileReader(string archivo){
@@ -576,9 +589,11 @@ namespace DeepLingo {
 			
 		public Node Array() {
 			Expect (TokenCategory.OPEN_SQUARE_BRACK);
+			var array = new Array();
 			var exprList = ExprList ();
+			array.Add(exprList);
 			Expect (TokenCategory.CLOSE_SQUARE_BRACK);
-			return exprList;
+			return array;
 		}
 
 		public Node FunCall() {

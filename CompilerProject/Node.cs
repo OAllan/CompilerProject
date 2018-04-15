@@ -65,5 +65,9 @@ namespace DeepLingo {
                 TreeTraversal(child, indent + "  ", sb);
             }
         }
+
+        public int ChildrenSize() {
+            return children.Count;
+        }
     }
 }
