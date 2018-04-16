@@ -49,6 +49,9 @@ namespace DeepLingo {
             if (!Functions.Contains("main")) {
                 throw new SemanticError("Function main not declared");
             }
+            if (Functions.Contains("main") && Functions["main"] != 0){
+                throw new SemanticError("Function main must have arity 0");
+            }
             Scope = "";
             foreach (var n in node[0]){
                 if (n.GetType() == typeof(VarDefinition)) {
