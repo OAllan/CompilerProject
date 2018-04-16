@@ -1,4 +1,4 @@
-// This class performs the lexical analysis.
+// This class is used to create variables found in the program
 
 // Semantic Analysis
 // Date: 16-April-2018

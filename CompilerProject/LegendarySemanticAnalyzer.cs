@@ -1,4 +1,4 @@
-// This class performs the lexical analysis.
+// This class performs the semantic analysis.
 
 // Semantic Analysis
 // Date: 16-April-2018

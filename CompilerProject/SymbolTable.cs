@@ -16,7 +16,7 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-// This class performs the lexical analysis.
+// This class generates the table where the variables are stored
 
 // Semantic Analysis
 // Date: 16-April-2018

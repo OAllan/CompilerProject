@@ -16,7 +16,7 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-// This class performs the lexical analysis.
+// This class generates the table that contains all the functions in the program
 
 // Semantic Analysis
 // Date: 16-April-2018

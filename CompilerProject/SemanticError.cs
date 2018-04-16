@@ -1,4 +1,4 @@
-// This class performs the lexical analysis.
+// This class generates an error when a semantic error is found
 
 // Semantic Analysis
 // Date: 16-April-2018
