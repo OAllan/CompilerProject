@@ -11,6 +11,7 @@ Compiler Project
    * Lexical analysis
    * Syntactic analysis
    * AST Construction
+   * Semantic analysis
     
 ## Lexical Analyzer
 
@@ -35,6 +36,17 @@ To run:
 ```
 mono LegendarySyntacticAnalyzer.exe <file_name>
 ```
+
+## Semantic Analyzer
+
+To build, type:
+```
+make LegendarySemanticAnalyzer.exe
+```
+
+To run:
+```
+mono LegendarySemanticAnalyzer.exe <file_name>
     
 Where <file_name> is the name of a DeepLingo source file. You can try with
 these files:

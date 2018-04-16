@@ -42,7 +42,7 @@ namespace DeepLingo{
             sb.Append("Symbol Table\n");
             sb.Append("====================\n");
             foreach (var entry in data) {
-                sb.Append(String.Format("{0}: {1}\n", 
+                sb.Append(String.Format("Variable: {0}. Scope: {1}\n", 
                                         entry.Identifier, 
                                         entry.Scope));
             }
