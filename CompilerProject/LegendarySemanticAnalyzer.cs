@@ -52,7 +52,7 @@ namespace DeepLingo {
             foreach (var n in identifierList){
                 var id = n.AnchorToken.Value;
                 if(Variables.Contains(id, Scope)) {
-                    throw new SemanticError("Duplicated variable: " + id + " on " + Scope, n.AnchorToken);
+                    throw new SemanticError("Duplicated variable '" + id + "' on " + Scope, n.AnchorToken);
                 }
                 Variables.Add(new Variable(id, Scope));
             }
@@ -61,10 +61,14 @@ namespace DeepLingo {
         public void Visit (FunctionDefinition node) {
             if (!Scope.Equals("global")) {
                 Scope = node.AnchorToken.Value;
+                Visit ((dynamic) node[0]);
                 Visit ((dynamic) node[1]);
                 Visit ((dynamic) node[2]);
             } else {
-                Functions[node.AnchorToken.Value] = Visit ((dynamic) node[0]);
+                if (Functions.Contains(node.AnchorToken.Value)){
+                    throw new SemanticError("Function '" + node.AnchorToken.Value + "' already defined!", node.AnchorToken);
+                }
+                Functions[node.AnchorToken.Value] = node[0].ChildrenSize();
             }
         }
 
@@ -72,8 +76,14 @@ namespace DeepLingo {
             VisitChildren(node);
         }
 
-        public int Visit (ParameterList node) {
-            return node.ChildrenSize();
+        public void Visit (ParameterList node) {
+            foreach (var n in node) {
+                var id = n.AnchorToken.Value;
+                if(Variables.Contains(id, Scope)){
+                    throw new SemanticError("Duplicated variable '" + id + "' on " + Scope, n.AnchorToken);
+                }
+                Variables.Add(new Variable(id, Scope));
+            }
         }
 
         public void Visit (StatementList node) {
@@ -90,7 +100,7 @@ namespace DeepLingo {
 
         public void Visit (Assignment node) {
             if (!Variables.Contains(node.AnchorToken.Value, Scope) && !Variables.Contains(node.AnchorToken.Value)) {
-                throw new SemanticError ("Variable " + node.AnchorToken.Value + " not declared!", node.AnchorToken);
+                throw new SemanticError ("Variable '" + node.AnchorToken.Value + "' not declared!", node.AnchorToken);
             }
             VisitChildren(node);
         }
@@ -149,10 +159,11 @@ namespace DeepLingo {
 
         public void Visit (FunctionCall node) {
             if(!Functions.Contains(node.AnchorToken.Value)) {
-                throw new SemanticError("Function "+ node.AnchorToken.Value + " not declared!", node.AnchorToken);
+                throw new SemanticError("Function '"+ node.AnchorToken.Value + "' not declared!", node.AnchorToken);
             } else if (Functions[node.AnchorToken.Value] != node[0].ChildrenSize()) {
-                throw new SemanticError("Incorrect arity for function " + node.AnchorToken.Value + ". Expected " + Functions[node.AnchorToken.Value] + " arguments, given " + node[0].ChildrenSize(), node.AnchorToken);
+                throw new SemanticError("Incorrect arity for function '" + node.AnchorToken.Value + "'. Expected " + Functions[node.AnchorToken.Value] + " arguments, given " + node[0].ChildrenSize(), node.AnchorToken);
             }
+            VisitChildren(node);
         }
 
         public void Visit (ElseIfList node) {
@@ -168,7 +179,11 @@ namespace DeepLingo {
         }
 
         public void Visit (IntegerLiteral node) {
-
+            try {
+                Convert.ToInt32(node.AnchorToken.Value);
+            } catch(Exception e){
+                throw new SemanticError("Invalid integer literal", node.AnchorToken);
+            }
         }
 
         public void Visit (CharacterLiteral node) {
@@ -194,7 +209,7 @@ namespace DeepLingo {
         public void Visit (Identifier node) {
             var lexeme = node.AnchorToken.Value;
             if (!Variables.Contains(lexeme, Scope) && !Variables.Contains(lexeme)){
-                throw new SemanticError("Variable " + lexeme + " not declared!", node.AnchorToken);
+                throw new SemanticError("Variable '" + lexeme + "' not declared!", node.AnchorToken);
             }
         }
 
@@ -214,16 +229,15 @@ namespace DeepLingo {
         public void Visit (Increment node) {
             var lexeme = node.AnchorToken.Value;
             if (!Variables.Contains(lexeme, Scope) && !Variables.Contains(lexeme)){
-                throw new SemanticError("Variable " + lexeme + " not declared!", node.AnchorToken);
+                throw new SemanticError("Variable '" + lexeme + "' not declared!", node.AnchorToken);
             }
         }
 
-        
 
         public void Visit (Decrement node) {
             var lexeme = node.AnchorToken.Value;
             if (!Variables.Contains(lexeme, Scope) && !Variables.Contains(lexeme)){
-                throw new SemanticError("Variable " + lexeme + " not declared!", node.AnchorToken);
+                throw new SemanticError("Variable '" + lexeme + "' not declared!", node.AnchorToken);
             }
         }
 
