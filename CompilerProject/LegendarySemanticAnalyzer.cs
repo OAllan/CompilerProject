@@ -1,3 +1,13 @@
+// This class performs the lexical analysis.
+
+// Semantic Analysis
+// Date: 16-April-2018
+// Authors:
+//          A01374648 Mario Lagunes Nava 
+//          A01375640 Brandon Alain Cruz Ruiz
+//          A01376200 Oscar Allan Ruiz Toledo
+// File name: LegendarySemanticAnalyzer.cs
+
 using System;
 using System.Collections.Generic;
 
@@ -29,6 +39,7 @@ namespace DeepLingo {
             Functions["add"] = 2;
             Functions["get"] = 2;
             Functions["set"] = 3;
+            Functions["sizeof"] = 1;
             Variables = new SymbolTable();
             Scope = "global";
         }

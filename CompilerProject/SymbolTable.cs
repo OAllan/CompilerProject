@@ -16,6 +16,16 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+// This class performs the lexical analysis.
+
+// Semantic Analysis
+// Date: 16-April-2018
+// Authors:
+//          A01374648 Mario Lagunes Nava 
+//          A01375640 Brandon Alain Cruz Ruiz
+//          A01376200 Oscar Allan Ruiz Toledo
+// File name: SymbolTable.cs
+
 using System;
 using System.Text;
 using System.Collections.Generic;
