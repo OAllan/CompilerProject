@@ -531,8 +531,8 @@ namespace DeepLingo {
 
         public string Visit (Decrement node) {
             var id = node.AnchorToken.Value;
-            var result = "\t\tldc.i4 1\n";
-            result += loadVariable(id);
+            var result = loadVariable(id);
+            result += "\t\tldc.i4 1\n";
             result += "\t\tsub.ovf\n";
             result += "\t\t" + getVariableType(id) + "\n";
             return result;
