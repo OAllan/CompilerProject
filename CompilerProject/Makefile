@@ -19,5 +19,8 @@ LegendarySyntacticAnalyzer.exe: Reader.cs LegendaryTokenAnalyzer.cs Token.cs Tok
 LegendarySemanticAnalyzer.exe: Reader.cs LegendaryTokenAnalyzer.cs Token.cs TokenCategory.cs SyntaxError.cs
 	mcs -out:LegendarySemanticAnalyzer.exe Reader.cs LegendarySyntacticAnalyzer.cs Token.cs TokenCategory.cs SyntaxError.cs Node.cs NodeDefinitions.cs LegendarySemanticAnalyzer.cs SymbolTable.cs FunctionTable.cs SemanticError.cs Variable.cs
 
+Compiler.exe: Reader.cs LegendaryTokenAnalyzer.cs Token.cs TokenCategory.cs SyntaxError.cs
+	mcs -out:Compiler.exe Reader.cs LegendarySyntacticAnalyzer.cs Token.cs TokenCategory.cs SyntaxError.cs Node.cs NodeDefinitions.cs LegendarySemanticAnalyzer.cs SymbolTable.cs FunctionTable.cs SemanticError.cs Variable.cs LegendaryCompiler.cs
+
 clean:
 	rm LegendaryTokenAnalyzer.exe

@@ -91,6 +91,9 @@ namespace DeepLingo {
                 Console.WriteLine(entry);                        
             }
 			Console.WriteLine("Semantic ok!");
+			var compiler = new LegendaryCompiler();
+			var result = compiler.Visit((dynamic) program);
+			File.WriteAllText("output.il", result);
 		}
 
 		public static Reader FileReader(string archivo){

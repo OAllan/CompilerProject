@@ -81,5 +81,15 @@ namespace DeepLingo{
         public void Add (Variable variable) {
             data.Add(variable);
         } 
+
+
+        public void CleanArgs() {
+            for (var i = 0; i < data.Count; i++) {
+                var variable = data[i];
+                if(variable.Scope.Equals("!arg")) {
+                    data.RemoveAt(i);
+                }
+            }
+        }
     }
 }

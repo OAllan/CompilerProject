@@ -26,6 +26,11 @@ namespace DeepLingo {
 
         IList<Node> children = new List<Node>();
 
+        public Node Parent{
+            get;
+            private set;
+        }
+
         public Node this[int index] {
             get {
                 return children[index];
@@ -34,7 +39,13 @@ namespace DeepLingo {
 
         public Token AnchorToken { get; set; }
 
+        public Node SetParent(Node Parent) {
+            this.Parent = Parent;
+            return this;
+        }
+
         public void Add(Node node) {
+            node.SetParent(this);
             children.Add(node);
         }
 
@@ -48,7 +59,7 @@ namespace DeepLingo {
         }
 
         public override string ToString() {
-            return String.Format("{0} {1}", GetType().Name, AnchorToken);                                 
+            return String.Format("{0} {1} {2}", GetType().Name, AnchorToken, Parent != null? Parent.GetType().Name:"");                                 
         }
 
         public string ToStringTree() {
